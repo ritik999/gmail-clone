@@ -1,0 +1,20 @@
+.sidebar{
+    /* flex: 0.3; */
+    width: 250px;
+}
+
+.sidebar_compose{
+    color: gray !important;
+    padding: 10px 10px !important;
+    border-radius: 50px !important;
+    box-shadow: 1px 2px 4px 3px lightgray;
+    margin-bottom: 15px !important;
+}
+
+.sidebar_footerIcons{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100% !important;
+    margin-top: 15px;
+}
