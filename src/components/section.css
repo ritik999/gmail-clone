@@ -1,0 +1,32 @@
+h4{
+    margin: 0;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    /* border-bottom-width: 2px; */
+    padding: 10px;
+    flex: 0.2;
+    cursor: pointer;
+    color: gray;
+    border-width: 0 !important;
+}
+
+.section_selected{
+    background-color: whitesmoke;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-width: 3px !important;
+}
+
+.section:hover{
+    background-color: whitesmoke;
+    border-width: 3px !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.section > h4{
+    margin-left: 10px;
+}
