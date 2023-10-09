@@ -5,6 +5,8 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarBorder from '@mui/icons-material/StarBorder';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { selectMail } from '../redux/reducer';
 
 type PropsType={
     title:string,
@@ -15,8 +17,20 @@ type PropsType={
 
 const EmailRow = ({title,subject,description,time}:PropsType) => {
     const navigate = useNavigate();
+    const dispatch=useDispatch();
+
+    const openMail=()=>{
+        dispatch(selectMail({
+            title,
+            subject,
+            description,
+            time
+        }))
+
+        navigate('/mail')
+    }
   return (
-    <div className="emailRow" onClick={()=>navigate('mail')}>
+    <div className="emailRow" onClick={openMail}>
         <div className="emailRow_options">
             <Checkbox />
             <IconButton>

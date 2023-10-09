@@ -15,14 +15,20 @@ import PersonIcon from "@mui/icons-material/Person";
 import DuoIcon from "@mui/icons-material/Duo";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Main from "../pages/Main";
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../redux/reducer";
 
 const Sidebar = ({ children }: any) => {
+
+  const dispatch=useDispatch();
+
   return (
     <div className="sidebar">
       <div className="sidebar_left">
         <Button
           className="sidebar_compose"
           startIcon={<AddIcon fontSize="large" />}
+          onClick={()=>dispatch(openSendMessage())}
         >
           Compose
         </Button>

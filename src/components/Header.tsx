@@ -6,8 +6,20 @@ import SearchIcon from '@mui/icons-material/Search';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AppsIcon from '@mui/icons-material/Apps';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useDispatch } from "react-redux";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { logout } from "../redux/userReducer";
 
 const Header = () => {
+
+  const dispatch=useDispatch();
+
+  const signout=async()=>{
+      await signOut(auth);
+      dispatch(logout());
+  }
+
   return (
     <div className="header">
       <div className="header_left">
@@ -34,7 +46,7 @@ const Header = () => {
         <IconButton>
             <NotificationsIcon />
         </IconButton>
-        <Avatar className="headerRight_avatar" />
+        <Avatar onClick={signout} className="headerRight_avatar" />
       </div>
     </div>
   );

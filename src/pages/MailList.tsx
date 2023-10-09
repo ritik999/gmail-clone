@@ -13,8 +13,31 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EmailRow from '../components/EmailRow';
+import { collection, getDocs } from "firebase/firestore/lite"; 
+import {useState, useEffect} from 'react';
+import { db } from '../firebase';
 
 const MailList = () => {
+  
+  const [emails,setEmails]=useState([]);
+
+  const getData=async()=>{
+    const dataRecieve:any=await getDocs(collection(db, "sends"));
+
+    setEmails(
+      dataRecieve.docs.map((doc:any)=>(
+        {
+          id:doc.id,
+          data:doc.data()
+        }
+      ))
+    )
+  }
+
+  useEffect(()=>{
+    getData();
+  },[]);
+
   return (
     <div className="emailList">
       <div className="emailList_setting">
@@ -54,8 +77,11 @@ const MailList = () => {
         </div>
 
         <div className="emailList_list">
-          <EmailRow title='First' subject='testing the app' description='plese provide your valuable feedback' time='10pm' />
-          <EmailRow title='Second' subject='retest the app' description='plese provide your valuable feedback' time='11pm' />
+          {emails.map(({id,data:{To,Subject,Message}})=>(
+            <EmailRow  key={id} title={To} subject={Subject} description={Message} time='10pm' />
+          ))}
+          {/* <EmailRow title='First' subject='testing the app' description='plese provide your valuable feedback' time='10pm' />
+          <EmailRow title='Second' subject='retest the app' description='plese provide your valuable feedback' time='11pm' /> */}
         </div>
     </div>
   )

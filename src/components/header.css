@@ -4,6 +4,10 @@
     padding: 5px 10px;
     border-bottom: 1px solid lightgray;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
 }
 
 .header_left{
@@ -44,4 +48,5 @@
 
 .headerRight_avatar{
     margin-left: 5px;
+    cursor: pointer;
 }
